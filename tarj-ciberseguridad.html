@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ciberseguridad</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="stylesheet" href="styles-tarjetas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <img src="./images/5.png" alt="AsesorarSeg logo" class="logo-left-header" />
+        <div class="brand-text-only">
+            <div class="brand-title">
+                <div class="name">Asesorar<span class="seg">Seg</ul>
+                </div>
+                <div class="tag">Asesoramiento Corporativo en <span class="brand-orange-text">Seguridad</ul>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav" id="nav">
+            <a href="./index.html">Portada</a>
+            <a href="./nosotros.html">Equipo</a>
+            <a href="./index.html#services">Servicios</a>
+            <a href="#" id="openContactModalFromNav">Contacto</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <h2 class="subtitles-a">CIBERSEGURIDAD CORPORATIVA Y DEFENSA DIGITAL</h2>
+
+        <p class="paragraph-tarj">
+            Llevamos su defensa digital al más alto nivel. Nuestra visión de Ciberseguridad se enfoca en la resiliencia
+            total, protegiendo a usuarios, datos, redes y toda la infraestructura crítica.
+            En un panorama de amenazas híbridas, la seguridad física es insuficiente sin un blindaje digital robusto.
+            Implementamos estrategias de defensa proactiva para proteger la integridad de sus datos, la privacidad de su
+            información sensible y la operatividad ininterrumpida de sus sistemas críticos.
+        </p>
+
+
+        <h2 class="title-list">1. AUDITORÍA DE VULNERABILIDADES Y PENTESTING</h2>
+        <p class="ul-tarj">Identificación y explotación controlada de brechas en la red corporativa para anticipar ataques externos e internos.</p>
+        <p class="ul-tarj">Escaneo de activos críticos y evaluación de la superficie de ataque en entornos cloud y locales.</p>
+        <p class="ul-tarj">Informes técnicos de mitigación con priorización de riesgos basada en el impacto financiero para el negocio.</p>
+
+        <h2 class="title-list">2. SEGURIDAD DE RED Y DEFENSA PERIMETRAL</h2>
+        <p class="ul-tarj">Configuración avanzada de Firewalls de nueva generación (NGFW) y sistemas de detección/prevención de intrusos (IDS/IPS).</p>
+        <p class="ul-tarj">Segmentación de redes industriales (OT) y corporativas para contener la propagación de ransomware y malware.</p>
+        <p class="ul-tarj">Implementación de túneles VPN encriptados para el acceso remoto seguro de directivos y personal estratégico.</p>
+
+        <h2 class="title-list">3. CONCIENTIZACIÓN Y FACTOR HUMANO (SOCIAL ENGINEERING)</h2>
+        <p class="ul-tarj">Campañas de simulación de Phishing para evaluar y fortalecer la respuesta del personal ante ataques de ingeniería social.</p>
+        <p class="ul-tarj">Talleres de higiene digital para C-Level y puestos clave sobre manejo de credenciales y seguridad en dispositivos móviles.</p>
+
+        <h2 class="title-list">4. RESPUESTA A INCIDENTES Y RECUPERACIÓN (DRP)</h2>
+        <p class="ul-tarj">Desarrollo de Planes de Recuperación ante Desastres (Disaster Recovery Plan) para garantizar la continuidad tras un ciberataque.</p>
+        <p class="ul-tarj">Análisis forense digital para identificar el origen de brechas de seguridad y prevenir su recurrencia.</p>
+
+        <div class="space"></div>
+
+    </main>
+
+    <footer class="footer" id="contacto">
+            <p>© 2025 AsesorarSeg | Todos los derechos reservados.</p>
+
+            <p class="legal-links">
+                Email: <a href="mailto:info@asesorarseg.com">info@asesorarseg.com.ar</a>
+                | Teléfono: <a href="tel:+549117117-0005">+54 9 11 7117-0005</a>
+            </p>
+            <br>
+            <p class="legal-links">
+                Aviso Legal: El uso de este sitio web implica la aceptación de nuestros 
+                <a href="./terminos-condiciones.html" target="_blank">Términos y Condiciones</a> y
+                <a href="./politica-privacidad.html" target="_blank">Política de Privacidad</a>. De conformidad con la
+                Ley 25.326, los datos recolectados se utilizan
+                exclusivamente para la gestión de servicios y no son cedidos a terceros sin consentimiento expreso. El
+                titular de los datos personales tiene la facultad de ejercer el derecho de acceso en forma gratuita.
+                AsesorarSeg se reserva el derecho de actualizar estos términos en función de cambios normativos o
+                mejoras en la seguridad del sistema.
+            </p>
+        </footer>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-panel contact-panel">
+            <div class="modal-header">
+                <h2 class="modal-title">Hablemos de Seguridad</h2>
+                <button class="btn-close" aria-label="Cerrar Formulario">&times;</button>
+            </div>
+
+            <div class="modal-content">
+                <p>Complete el siguiente formulario</p>
+
+                <form id="modal-contact-form" class="contact-form" action="#" method="POST">
+                    <input type="text" name="name" placeholder="Nombre" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Teléfono" class="full">
+
+                    <select name="service" class="full" required>
+                        <option value="">Seleccione un servicio de interés...</option>
+                        <option value="seguridad-fisica">Seguridad Física y Electrónica</option>
+                        <option value="ciberseguridad">Ciberseguridad</option>
+                        <option value="monitoreo">Monitoreo Inteligente</option>
+                        <option value="tecnologia-avanzada">Tecnología Avanzada</option>
+                        <option value="blockchain">Blockchain y Cripto-seguridad</option>
+                        <option value="consultoria-estrategica">Consultoría Estratégica</option>
+                        <option value="auditorias">Auditorías Normativas</option>
+                        <option value="capacitacion">Capacitación Profesional</option>
+                        <option value="certificacion">Certificación de Personal</option>
+                        <option value="documentacion">Documentación Técnica</option>
+                        <option value="alianzas">Alianzas Institucionales</option>
+                        <option value="mineria">Minería y Petróleo</option>
+                        <option value="otro">Otro / Consulta General</option>
+                    </select>
+
+                    <textarea name="message" placeholder="Su mensaje o consulta" class="full" required></textarea>
+                    <button type="submit">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="java.js"></script>
+
+</body>
+
+</html>
