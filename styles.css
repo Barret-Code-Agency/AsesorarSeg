@@ -474,11 +474,105 @@ header img {
     line-height: 1.4;
 }
 
+/* Contenedor principal que agrupa carruseles y redes sociales */
+.main-social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+/* Configuración de los carruseles laterales */
+.carousel-side {
+    flex: 1;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(252, 76, 0, 0.05); /* Fondo sutil semitransparente */
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center; /* Centrado vertical del track */
+}
+
+/* EFECTO DE DESVANECIMIENTO: Ahora en ambos extremos */
+.carousel-side {
+    -webkit-mask-image: linear-gradient(
+        to right, 
+        transparent 0%, 
+        black 7%, 
+        black 93%, 
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right, 
+        transparent 0%, 
+        black 7%, 
+        black 93%, 
+        transparent 100%
+    );
+}
+
+/* El track que contiene los logos */
+.carousel-track {
+    display: flex;
+    align-items: center;
+    width: calc(250px * 10);
+    animation: scroll-left 20s linear infinite;
+}
+
+.track-reverse {
+    animation: scroll-right 20s linear infinite;
+}
+
+/* Items individuales (Logo + Texto) */
+.c-item {
+    width: 250px; 
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.c-item img {
+    max-height: 70px; /* Tamaño del logo */
+    width: auto;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.c-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--naranja-marca);
+    letter-spacing: 1.5px;
+}
+
+/* Animaciones para flujo hacia el centro */
+@keyframes scroll-left {
+    0% { transform: translateX(calc(-250px * 5)); }
+    100% { transform: translateX(0); }
+}
+
+/* Ahora el derecho se moverá hacia la derecha (alejándose del centro) */
+@keyframes scroll-right {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 5)); }
+}
+
+
 .social-networks {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 10px;
     margin: 10px auto;
     padding: 20px;
     flex-wrap: wrap;
@@ -949,7 +1043,11 @@ header img {
     background: var(--brand-orange-dark);
 }
 
-
+.contact-info {
+    color: var(--blanco);
+    font-weight: 800;
+    text-decoration: none;
+}
 
 /* ============================================= */
 /* ============ SECCION 10 - FOOTER ============ */
@@ -969,7 +1067,7 @@ header img {
 }
 
 .footer a {
-    color: #fff;
+    color: var(--blanco);
     text-decoration: none;
     transition: color 0.2s;
     padding: 0 0.5rem;
@@ -980,7 +1078,7 @@ header img {
 }
 
 .contact-info a {
-    color: inherit;
+    color: var(--blanco);
     font-weight: 800;
     text-decoration: none;
 }
