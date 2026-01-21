@@ -526,7 +526,7 @@ header img {
 }
 
 .track-reverse {
-    animation: scroll-right 20s linear infinite;
+    animation: scroll-left 20s linear infinite;
 }
 
 /* Items individuales (Logo + Texto) */
@@ -561,7 +561,6 @@ header img {
     100% { transform: translateX(0); }
 }
 
-/* Ahora el derecho se moverá hacia la derecha (alejándose del centro) */
 @keyframes scroll-right {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-250px * 5)); }
