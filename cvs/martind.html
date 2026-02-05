@@ -2,107 +2,98 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>AsesorarSeg</title>
-    <link rel="icon" type="image/png" href="./images/favicon.png">
-    <link rel="stylesheet" href="styles-cv.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap"
-        rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV | Martin Delgado</title>
+  <link rel="stylesheet" href="styles-cv.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<link rel="stylesheet" href="Styles-cv.css">
 <body>
-  <div class="cv-container">
-    <div class="cv-text">
-      <h1>Martin Delgado</h1>
-      <h2>Desarrollador web full-stack</h2>
+  <div class="cv-paper">
+    <header class="cv-header">
+      <div class="brand">
+        <h1>Martin Delgado</h1>
+        <p class="tagline">Desarrollador Web Full-Stack • Arquitecto de Software</p>
+        <p class="position">Especialista en Soluciones Integrales y Transformación Digital</p>
+        <p class="position">Vertical: Enabler Tecnológico.</p>
+      </div>
+      <div class="photo-frame">
+        <img src="../images/Martin.jpeg" alt="Martin Delgado">
+      </div>
+    </header>
 
-      <section>
-        <h3>Perfil Profesional</h3>
-        <br>
-        <li>Martin Delgado es un Desarrollador Full Stack Jr. con sólida formación técnica y experiencia en proyectos
-          web integrales, capaz de trabajar tanto en frontend como en backend. Su trayectoria en el deporte profesional
-          le aportó disciplina, resiliencia y habilidades de trabajo en equipo que hoy aplica al desarrollo de software.
-          Se destaca por su capacidad de adaptación, pensamiento lógico y entusiasmo por la tecnología, los videojuegos
-          y la resolución de problemas, lo que lo convierte en un perfil versátil y orientado a aportar soluciones
-          innovadoras y colaborar en proyectos que generen impacto.</li>
-
-
+    <main class="cv-grid">
+      <section class="full-width">
+        <h3 class="section-title">Perfil Profesional</h3>
+        <p class="profile-text">
+          Desarrollador Full Stack con sólida formación técnica en la creación de ecosistemas web integrales.
+          Su trayectoria en el deporte profesional de alto rendimiento, le ha dotado de una disciplina, resiliencia y
+          capacidad de trabajo en
+          equipo excepcionales, aplicadas hoy al desarrollo de software de alta disponibilidad. Experto en pensamiento
+          lógico
+          y resolución de problemas complejos mediante soluciones tecnológicas innovadoras.
+          <br>
+          Martin domina el ciclo completo de vida del software (SDLC), lo que permite a la consultora ofrecer soluciones
+          personalizadas de gestión de datos sin depender de software externo limitado.
+        </p>
       </section>
 
-      <section>
-        <h3>Experiencia</h3>
-        <ul>
-          <li><em>Aplicación Web de Control de Stock y Facturación – 2025</em>
-            <ul>
-              <li>Gestión de productos y stock</li>
-              <li>Roles de usuario (Administrador, Gerente, Vendedor)</li>
-              <li>Sistema de facturación con PDF y filtros</li>
-              <li>Comisiones automáticas con historial por venta</li>
-              <li>Login con JWT y protección de rutas</li>
-              <li><strong>Tecnologías:</strong> Nest.js, Next.js, MySQL</li>
-              <br>
+      <section class="full-width">
+        <h3 class="section-title">Experiencia en Desarrollo y Proyectos</h3>
+        <div class="timeline">
+          <div class="entry">
+            <span class="date">2025</span>
+            <div class="details">
+              <p class="role"><strong>Web App: Control de Stock y Facturación</strong></p>
+              <p class="desc">Sistema empresarial con gestión de productos, roles de usuario jerárquicos y facturación
+                automática en PDF. Implementación de login seguro con JWT y protección de rutas. (Stack: Nest.js,
+                Next.js, MySQL).</p>
+            </div>
+          </div>
+          <div class="entry">
+            <span class="date">2024</span>
+            <div class="details">
+              <p class="role"><strong>Web App: Cotizaciones Bursátiles</strong></p>
+              <p class="desc">Plataforma de visualización de datos financieros con gráficos interactivos y
+                automatización de índices mediante consumo de APIs externas. (Stack: Nest.js, Next.js, MySQL).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-columns">
+          <section>
+            <h3 class="section-title">Formación Académica</h3>
+            <ul class="clean-list">
+              <li><strong>JavaScript (ES6+)</strong></li>
+              <li><strong>TypeScript</strong></li>
+              <li><strong>HTML5 & CSS3</strong></li>
+              <li><strong>SQL</strong></li>
+              <li><strong>Nest.js</strong></li>
+              <li><strong>Node.js</strong></li>
+              <li><strong>JWT (JSON Web Tokens)</strong></li>
+              <li><strong>MySQL</strong></li>
             </ul>
-          </li>
+          </section>
 
-          <li><em>Aplicación Web de Cotizaciones Bursátiles – 2024</em>
-            <ul>
-              <li>Visualización de datos bursátiles con gráficos interactivos</li>
-              <li>Automatización de generación de índices</li>
-              <li>Consumo de API externa</li>
-              <li><strong>Tecnologías:</strong> Nest.js, Next.js, MySQL</li>
-              <br>
-            </ul>
-          </li>
+          <section>
+            <h3 class="section-title">Competencias</h3>
+            <div class="pills">
+              <span>Backend (Lógica y Seguridad): Experto en Nest.js y Node.js</span>
+              <span>Frontend (Interfaz de Usuario): Especialista en Next.js y React.js</span>
+              <span>Persistencia de Datos</span>
+              <span>Gestión de Identidades</span>
+              <span>Criptografía Aplicada</span>
+              <span>Digitalización de Activos</span>
+              <span>Visualización de Riesgos</span>
+            </div>
+          </section>
+        </div>
+    </main>
 
-          <li><em>Minijuego Web de Cofres – 2023</em>
-            <ul>
-              <li>Registro/Login con JWT</li>
-              <li>Panel de administrador con gestión de usuarios, cofres y monedas</li>
-              <li>Historial de premios y transacciones</li>
-              <li>Roles con validaciones por bcrypt</li>
-              <li><strong>Tecnologías:</strong> Node.js, React.js, MySQL</li>
-              <br>
-            </ul>
-          </li>
-
-          <li><em>Portal de Empleo – 2022</em>
-            <ul>
-              <li>Home con cards de noticias</li>
-              <li>Portal de empleos con puestos y empresas</li>
-              <li>Publicación de búsquedas laborales</li>
-              <li><strong>Tecnologías:</strong> React.js</li>
-            </ul>
-          </li>
-
-      </section>
-
-      <section>
-        <h3>Educación</h3>
-        <ul>
-          <li>Fullstack developer – Programa Vertice en Cluster tecnologico de Tandil, 2022</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Competencias</h3>
-        <ul>
-          <li>Adaptabilidad</li>
-          <li>Comunicacion asertiva</li>
-          <li>Resolucion de problemas</li>
-          <li>Trabajo en equipo</li>
-          <li>Aprendizaje continuo</li>
-        </ul>
-      </section>
-
-    </div>
-
-    <div class="cv-photo">
-      <img src="../images/Martin.jpeg" alt="Foto del consultor Martin" />
-    </div>
+    <footer class="cv-footer">
+      <p>info@asesorarseg.com.ar | www.asesorarseg.com.ar</p>
+    </footer>
   </div>
 </body>
 
