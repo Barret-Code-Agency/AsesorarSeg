@@ -518,14 +518,17 @@ header img {
 }
 
 /* El track que contiene los logos */
-.carousel-track {
+.carousel-track-right {
+    display: flex;
+    align-items: center;
+    width: calc(-250px * 10);
+    animation: scroll-right 20s linear infinite;
+}
+
+.carousel-track-left {
     display: flex;
     align-items: center;
     width: calc(250px * 10);
-    animation: scroll-left 20s linear infinite;
-}
-
-.track-reverse {
     animation: scroll-left 20s linear infinite;
 }
 
@@ -1095,4 +1098,12 @@ header img {
     margin-top: 0px; 
     background-color: var(--black);
     color: var(--negro-marca);
+}
+
+.c-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: inherit;
 }
