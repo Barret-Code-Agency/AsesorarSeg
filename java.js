@@ -385,3 +385,55 @@
   }
 
 })(); 
+
+
+/* ---------------------------
+    envio de whatsapp - formulariode  contacto
+  ----------------------------*/
+
+
+document.getElementById('modal-contact-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const btn = this.querySelector('button');
+    const form = this;
+    const originalText = btn.innerText;
+    
+    // Feedback táctico: El usuario siente que la web es robusta
+    btn.innerText = "Enviando consulta segura...";
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+
+    // Envío por detrás (AJAX)
+    try {
+        const response = await fetch("https://formspree.io/f/xdalnpdw", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Éxito: El usuario se queda en tu web, pero tú ya tienes los datos
+            btn.innerText = "Consulta Enviada con Éxito";
+            btn.style.backgroundColor = "#28a745"; // Verde éxito
+            
+            setTimeout(() => {
+                alert("Gracias por contactar a AsesorarSeg. Un consultor se comunicará con usted a la brevedad.");
+                form.reset();
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = ""; // Volver al color original
+                // Aquí podrías cerrar el modal automáticamente
+            }, 1000);
+
+        } else {
+            throw new Error('Error en el envío');
+        }
+    } catch (error) {
+        btn.innerText = "Error. Intente nuevamente";
+        btn.disabled = false;
+    }
+});
