@@ -217,21 +217,32 @@ header img {
     color: var(--naranja-marca);
 }
 
-.hamburger {
+.nav-mobile {
     display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 2px;
+    background-color: var(--negro-marca);
 }
 
-.hamburger span {
+.btn-nav {
     display: block;
-    width: 26px;
-    height: 3px;
-    background: var(--naranja-marca);
+    padding: 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--naranja-marca);
+    background-color: #2c2c2c;
+    border: 1px solid #444;
     border-radius: 10px;
-    margin: 5px 0;
+    font-weight: 400;
     transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.btn-nav:hover, .btn-nav:active {
+    background-color: #ff6600;
+    border-color: #ff6600;
+    transform: translateY(-2px);
 }
 
 /* =========================================================================== */
@@ -508,15 +519,12 @@ header img {
         display: none;
     }
 
-    .hamburger {
-        display: block;
-        padding: 10px;
+    .nav {
+        display: none;
     }
 
-    .hamburger span {
-        width: 64px;
-        height: 15px;
-        margin: 6px 0;
+    .nav-mobile {
+        display: flex;
     }
 
     .header img {
