@@ -178,106 +178,73 @@
   ----------------------------*/
 
   function initTeamModal() {
-    // Support several ID variants used in your HTMLs:
-    const modal = document.getElementById('cvModal') || document.getElementById('cv-modal') || document.querySelector('.modal-overlay#cvModal') || null;
+    const modal = document.getElementById('cvModal') || document.getElementById('cv-modal');
     if (!modal) return;
 
-    const iframe = modal.querySelector('#modalIframe') || modal.querySelector('#cv-iframe') || modal.querySelector('iframe');
-    const titleEl = modal.querySelector('#modalTitle') || modal.querySelector('#modal-title') || modal.querySelector('.modal-title');
-    const btnClose = modal.querySelector('#btnClose') || modal.querySelector('#btn-close') || modal.querySelector('.btn-close');
-    const btnDownload = modal.querySelector('#btnDownload') || modal.querySelector('#btn-download') || modal.querySelector('.btn-download');
-    const modalActions = modal.querySelector('.modal-actions') || modal.querySelector('.modal-actions') || null;
+    const iframe = modal.querySelector('#modalIframe');
+    const titleEl = modal.querySelector('#modalTitle');
+    const btnClose = modal.querySelector('#btnClose');
+    const btnDownload = modal.querySelector('#btnDownload');
 
-    // Cards that open CVs: selector '.card' inside .card-wrap
-    const cardEls = $$('.card');
+    // Selección de las tarjetas
+    const cardEls = document.querySelectorAll('.card');
 
-    function openCV(cvPath, name) {
-      if (titleEl) titleEl.textContent = name ? `Currículo ${name}` : 'Currículo';
-      if (iframe && cvPath) {
-        // If it's a PDF or HTML, we set src. For PDF we keep download available.
-        iframe.src = cvPath;
-      }
-      // Set download data
-      if (btnDownload) {
-        const isFile = typeof cvPath === 'string' && cvPath.toLowerCase().endsWith('.pdf');
-        btnDownload.style.display = isFile ? 'inline-block' : 'inline-block'; // show regardless; controller below will set dataset
-        btnDownload.dataset.href = cvPath || '';
-      }
-      openModal(modal, '.modal-panel');
+    function openCV(cvPath, pdfPath, name) {
+        if (titleEl) titleEl.textContent = name ? `Currículo ${name}` : 'Currículo';
+        if (iframe && cvPath) {
+            iframe.src = cvPath;
+        }
+
+        // Configuración del botón de descarga
+        if (btnDownload) {
+            // Guardamos la ruta del PDF en un atributo de datos
+            btnDownload.dataset.pdf = pdfPath || '';
+            
+            // Acción al hacer clic: Descarga real
+            btnDownload.onclick = function(e) {
+                e.preventDefault();
+                const path = this.dataset.pdf;
+                if (path) {
+                    const a = document.createElement('a');
+                    a.href = path;
+                    // Forzamos el nombre del archivo basado en el path
+                    a.download = path.split('/').pop(); 
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+            };
+        }
+        openModal(modal, '.modal-panel');
     }
 
-    function closeCV() {
-      closeModal(modal, '.modal-panel');
-    }
-
-    // Wire cards
     cardEls.forEach((card) => {
-      const cv = (card.getAttribute('data-cv') || '').trim();
-      const name = card.getAttribute('data-name') || card.querySelector('h3')?.textContent || '';
-      // click
-      card.addEventListener('click', () => {
-        if (cv) openCV(cv, name);
-      });
-      // keyboard accessibility (Enter / Space)
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          card.click();
-        }
-      });
-      // ensure it is announced as button
-      card.setAttribute('role', 'button');
-      if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
+        // Obtenemos los datos del HTML
+        const cv = card.getAttribute('data-cv');
+        const pdf = card.getAttribute('data-pdf'); // Agregamos este atributo
+        const name = card.getAttribute('data-name') || card.querySelector('h3')?.textContent || '';
+
+        card.addEventListener('click', () => {
+            if (cv) openCV(cv, pdf, name);
+        });
+
+        // Accesibilidad
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
     });
 
-    // Close button
-    if (btnClose) btnClose.addEventListener('click', closeCV);
-
-    // Click outside to close
+    if (btnClose) btnClose.addEventListener('click', () => closeModal(modal, '.modal-panel'));
+    
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeCV();
+        if (e.target === modal) closeModal(modal, '.modal-panel');
     });
-
-    // ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeCV();
-    });
-
-    // Download handling (delegation)
-    if (modalActions) {
-      modalActions.addEventListener('click', (e) => {
-        const el = e.target;
-        if (!el) return;
-        if (el.classList.contains('btn-download') || el.classList.contains('btn-download')) {
-          const href = el.dataset.href;
-          if (href) {
-            const a = document.createElement('a');
-            a.href = href;
-            // suggest filename if PDF
-            a.download = '';
-            a.rel = 'noopener';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-          }
-        }
-      });
-    } else if (btnDownload) {
-      btnDownload.addEventListener('click', (e) => {
-        const href = e.currentTarget.dataset.href;
-        if (href) {
-          const a = document.createElement('a');
-          a.href = href;
-          a.download = '';
-          a.rel = 'noopener';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        }
-      });
-    }
-  }
-
+}
   /* ---------------------------
      ROTADOR (index.html) — accessible improvements
   ----------------------------*/
