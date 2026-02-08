@@ -45,7 +45,7 @@ body {
             rgba(0, 0, 0, 0.4) 0%,
             rgba(0, 0, 0, 0.7) 70%,
             #000000 90%),
-        url('./images/Monitoring 4.jpg') no-repeat center center fixed;
+        url('./images/Monitoring-4.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--blanco);
     line-height: 1.45;
@@ -387,7 +387,7 @@ header img {
             rgba(0, 0, 0, 0) 50%,
             rgba(0, 0, 0, 0.8) 75%,
             #000000 95%),
-        url('./images/Monitoring 4.jpg') no-repeat center top / cover;
+        url('./images/Monitoring-4.jpg') no-repeat center top / cover;
     background-attachment: fixed;
 
 
@@ -1462,4 +1462,53 @@ header img {
         display: none;
     }
 
+}
+
+@media print {
+    /* 1. Ocultar absolutamente todo lo que sea interfaz web */
+    body * {
+        visibility: hidden;
+    }
+
+    /* 2. Hacer visible solo el modal y su contenido */
+    #cvModal, #cvModal * {
+        visibility: visible;
+    }
+
+    /* 3. Limpiar el modal de elementos molestos (botones, cabeceras) */
+    .modal-header, 
+    .modal-actions, 
+    .btn-close,
+    .header,
+    .nav,
+    .nav-mobile {
+        display: none !important;
+    }
+
+    /* 4. Resetear el panel del modal para que ocupe toda la hoja sin desplazarse */
+    .modal-overlay {
+        position: static !important; /* Quita el fondo oscuro */
+        padding: 0 !important;
+        margin: 0 !important;
+        background: white !important;
+    }
+
+    .modal-panel {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important; /* Usa el 100% del ancho del papel */
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    /* 5. Asegurar que el iframe no limite el tamaño */
+    .modal-iframe {
+        width: 100% !important;
+        height: 297mm !important; /* Altura A4 */
+        border: none !important;
+    }
 }
