@@ -1527,6 +1527,14 @@ header img {
     border: 1.5px solid var(--naranja-marca);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     display: block;
+    /* Semitransparente para integrarse con el look "glass" del resto del
+       sitio (deja translucir el fondo oscuro de la sección). Ajustable. */
+    opacity: 0.85;
+    transition: opacity .3s ease;
+}
+
+.flowchart-figure img:hover {
+    opacity: 1;
 }
 
 .flowchart-figure figcaption {
