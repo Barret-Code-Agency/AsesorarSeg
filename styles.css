@@ -10,6 +10,13 @@
     --blanco: white;
     --text-p: #424242;
 
+    /* Alias usados en el resto del CSS (antes no estaban definidos y los
+       estilos que los usaban quedaban rotos: footer, modal CV, botón de
+       descarga, hovers). Se mapean a la paleta de marca. */
+    --black: #000;
+    --brand-orange: #fc4c00;
+    --brand-orange-dark: #c93d00;
+
     /* fuente */
     --font-family: "TikTok Sans", sans-serif;
 
@@ -177,7 +184,7 @@ body {
 }
 
 .line-orange {
-    width: 100;
+    width: 100%;
     background-color: var(--naranja-marca);
     height: 1.5px;
     margin-bottom: 10px;
