@@ -304,7 +304,7 @@ header img {
 
 .rotator {
     position: relative;
-    min-height: 120px;
+    min-height: clamp(150px, 24vw, 180px);
 }
 
 .rotator .item {
@@ -319,8 +319,8 @@ header img {
     opacity: 0;
     transform: translateY(10px) scale(0.98);
     transition: opacity .45s ease, transform .45s cubic-bezier(.2, .9, .2, 1);
-    font-size: 36px;
-    padding: 36px 10px;
+    font-size: clamp(20px, 4.5vw, 36px);
+    padding: clamp(16px, 4vw, 36px) 12px;
 }
 
 .rotator .item:nth-child(1) {
@@ -1130,7 +1130,7 @@ header img {
 
 .footer {
     text-align: center;
-    padding: 10px;
+    padding: 10px 10px 90px;
     font-size: 12px;
     margin-top: 0px;
     background-color: var(--black);
@@ -1484,7 +1484,9 @@ header img {
 .hero-cta-wrap {
     display: flex;
     justify-content: center;
-    margin: 30px 0 6px;
+    margin: 48px 0 6px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-cta {
