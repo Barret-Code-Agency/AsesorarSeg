@@ -1529,7 +1529,7 @@ header img {
     display: block;
     /* Semitransparente para integrarse con el look "glass" del resto del
        sitio (deja translucir el fondo oscuro de la sección). Ajustable. */
-    opacity: 0.85;
+    opacity: 0.6;
     transition: opacity .3s ease;
 }
 
