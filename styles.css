@@ -302,6 +302,11 @@ header img {
 /* ================================================ */
 
 
+.rotator {
+    position: relative;
+    min-height: 120px;
+}
+
 .rotator .item {
     position: absolute;
     left: 0;
@@ -1469,6 +1474,129 @@ header img {
         display: none;
     }
 
+}
+
+/* ============================================= */
+/* ====== SECCIÓN 21: CTA HERO + FLOWCHART ===== */
+/* ============================== + WHATSAPP ==== */
+
+/* Botón de llamada a la acción en el hero */
+.hero-cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 6px;
+}
+
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--naranja-marca);
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(16px, 2vw, 20px);
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    border: 2px solid var(--naranja-marca);
+    box-shadow: 0 8px 24px rgba(252, 76, 0, 0.35);
+    transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+}
+
+.hero-cta:hover,
+.hero-cta:focus-visible {
+    transform: translateY(-3px);
+    background: transparent;
+    color: var(--naranja-marca);
+    box-shadow: 0 12px 28px rgba(252, 76, 0, 0.45);
+}
+
+/* Imagen del flowchart (Arquitectura de Trabajo) */
+.flowchart-figure {
+    margin: 24px auto 10px;
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+.flowchart-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1.5px solid var(--naranja-marca);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    display: block;
+}
+
+.flowchart-figure figcaption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--gris-marca);
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    transition: transform .2s ease, box-shadow .2s ease;
+    animation: wa-pulse 2.4s ease-out infinite;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+    transform: scale(1.08);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+    width: 34px;
+    height: 34px;
+    fill: #fff;
+}
+
+@keyframes wa-pulse {
+    0% {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .4), 0 0 0 0 rgba(37, 211, 102, .45);
+    }
+
+    70% {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .4), 0 0 0 16px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .4), 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-float {
+        animation: none;
+    }
+}
+
+@media (max-width: 531px) {
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        right: 14px;
+        bottom: 14px;
+    }
+
+    .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media print {

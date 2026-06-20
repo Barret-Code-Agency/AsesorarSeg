@@ -99,10 +99,12 @@
   ----------------------------*/
 
   function initContactModal() {
-    // Possible element names across files:
     const modal = document.getElementById('contactModal') || $('.modal.contact') || null;
-    // Trigger in nav
-    const openFromNav = document.getElementById('openContactModalFromNav') || $('[data-open-contact]') || null;
+    // Todos los disparadores del modal: "Contacto" del nav desktop, "Contacto"
+    // del nav mobile y cualquier elemento con [data-open-contact] (p. ej. el CTA
+    // del hero). Antes solo se enganchaba el primero, por lo que el botón mobile
+    // y el CTA del hero no abrían el modal.
+    const triggers = $$('#openContactModalFromNav, #contactBtn, [data-open-contact]');
     // close button inside modal (class .btn-close)
     const closeBtn = modal ? modal.querySelector('.btn-close') : null;
     const form = modal ? modal.querySelector('#modal-contact-form') : null;
@@ -112,27 +114,26 @@
     // Open function
     function open() {
       openModal(modal);
-      // mark aria-expanded on trigger if exists
-      if (openFromNav) openFromNav.setAttribute('aria-expanded', 'true');
+      triggers.forEach(t => t.setAttribute('aria-expanded', 'true'));
     }
 
     // Close function
     function close() {
       closeModal(modal);
-      if (openFromNav) openFromNav.setAttribute('aria-expanded', 'false');
+      triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
       if (form) form.reset();
     }
 
-    // Click open from nav
-    if (openFromNav) {
-      openFromNav.addEventListener('click', (e) => {
+    // Enganchar todos los disparadores de apertura
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
         e.preventDefault();
         open();
       });
       // ensure accessibility attributes
-      openFromNav.setAttribute('role', 'button');
-      if (!openFromNav.hasAttribute('aria-expanded')) openFromNav.setAttribute('aria-expanded', 'false');
-    }
+      trigger.setAttribute('role', 'button');
+      if (!trigger.hasAttribute('aria-expanded')) trigger.setAttribute('aria-expanded', 'false');
+    });
 
     // Click close
     if (closeBtn) closeBtn.addEventListener('click', close);
