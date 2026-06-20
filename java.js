@@ -147,30 +147,10 @@
       if (e.key === 'Escape' && modal.classList.contains('open')) close();
     });
 
-    // Optional: handle form submission gracefully (example: prevent default and show simple ack)
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        // default behavior left to server; if you want to handle via fetch/AJAX, do it here.
-        // For now we'll prevent default and show a small accessible confirmation, then close.
-        e.preventDefault();
-        // Simple accessible confirmation (could be replaced by toast)
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) submitBtn.disabled = true;
-        // simulate success
-        setTimeout(() => {
-          if (submitBtn) submitBtn.disabled = false;
-          close();
-          // optional: alert for screen readers
-          const sr = document.createElement('div');
-          sr.setAttribute('role', 'status');
-          sr.style.position = 'absolute';
-          sr.style.left = '-9999px';
-          sr.textContent = 'Formulario enviado. Gracias.';
-          document.body.appendChild(sr);
-          setTimeout(() => sr.remove(), 2000);
-        }, 700);
-      });
-    }
+    // El envío real del formulario (AJAX a Formspree) se maneja en un único
+    // listener al final de este archivo. No agregamos aquí un segundo listener
+    // de 'submit' para evitar que dos handlers compitan (cierre prematuro del
+    // modal vs. envío real).
   }
 
   /* ---------------------------
@@ -355,17 +335,22 @@
 
 
 /* ---------------------------
-    envio de whatsapp - formulariode  contacto
+    Envío del formulario de contacto (AJAX a Formspree → email)
+    Guarda de existencia: en páginas sin este formulario (p. ej. nosotros.html)
+    no se intenta enlazar el listener, evitando un TypeError que cortaría el script.
   ----------------------------*/
 
+(function () {
+  const contactForm = document.getElementById('modal-contact-form');
+  if (!contactForm) return;
 
-document.getElementById('modal-contact-form').addEventListener('submit', async function(event) {
+  contactForm.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const btn = this.querySelector('button');
     const form = this;
     const originalText = btn.innerText;
-    
+
     // Feedback táctico: El usuario siente que la web es robusta
     btn.innerText = "Enviando consulta segura...";
     btn.disabled = true;
@@ -374,33 +359,41 @@ document.getElementById('modal-contact-form').addEventListener('submit', async f
 
     // Envío por detrás (AJAX)
     try {
-        const response = await fetch("https://formspree.io/f/xdalnpdw", {
-            method: "POST",
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            // Éxito: El usuario se queda en tu web, pero tú ya tienes los datos
-            btn.innerText = "Consulta Enviada con Éxito";
-            btn.style.backgroundColor = "#28a745"; // Verde éxito
-            
-            setTimeout(() => {
-                alert("Gracias por contactar a AsesorarSeg. Un consultor se comunicará con usted a la brevedad.");
-                form.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-                btn.style.backgroundColor = ""; // Volver al color original
-                // Aquí podrías cerrar el modal automáticamente
-            }, 1000);
-
-        } else {
-            throw new Error('Error en el envío');
+      const response = await fetch("https://formspree.io/f/xdalnpdw", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
         }
+      });
+
+      if (response.ok) {
+        // Éxito: El usuario se queda en tu web, pero tú ya tienes los datos
+        btn.innerText = "Consulta Enviada con Éxito";
+        btn.style.backgroundColor = "#28a745"; // Verde éxito
+
+        setTimeout(() => {
+          alert("Gracias por contactar a AsesorarSeg. Un consultor se comunicará con usted a la brevedad.");
+          form.reset();
+          btn.innerText = originalText;
+          btn.disabled = false;
+          btn.style.backgroundColor = ""; // Volver al color original
+
+          // Cerrar el modal automáticamente tras el envío exitoso
+          const modal = document.getElementById('contactModal');
+          if (modal) {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          }
+        }, 1000);
+
+      } else {
+        throw new Error('Error en el envío');
+      }
     } catch (error) {
-        btn.innerText = "Error. Intente nuevamente";
-        btn.disabled = false;
+      btn.innerText = "Error. Intente nuevamente";
+      btn.disabled = false;
     }
-});
+  });
+})();
