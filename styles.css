@@ -52,7 +52,7 @@ body {
             rgba(0, 0, 0, 0.4) 0%,
             rgba(0, 0, 0, 0.7) 70%,
             #000000 90%),
-        url('./images/Monitoring-4.jpg') no-repeat center center fixed;
+        url('./images/Monitoring-4.webp') no-repeat center center fixed;
     background-size: cover;
     color: var(--blanco);
     line-height: 1.45;
@@ -399,7 +399,7 @@ header img {
             rgba(0, 0, 0, 0) 50%,
             rgba(0, 0, 0, 0.8) 75%,
             #000000 95%),
-        url('./images/Monitoring-4.jpg') no-repeat center top / cover;
+        url('./images/Monitoring-4.webp') no-repeat center top / cover;
     background-attachment: fixed;
 
 
@@ -1656,4 +1656,29 @@ header img {
         height: 297mm !important; /* Altura A4 */
         border: none !important;
     }
+}
+
+/* ---------- Formulario con etiquetas visibles (accesibilidad) ---------- */
+.contact-panel .modal-content, .contact-panel .modal-content p { color: #e6e6e6; }
+.cf-field { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; color: #e6e6e6; }
+.cf-field > span { font-weight: 600; }
+.cf-field.full { grid-column: 1 / -1; }
+.cf-status { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: 0.95rem; text-align: left; }
+.cf-status.ok { color: #7ee2a0; }
+.cf-status.error { color: #ff8a80; }
+.cf-alt { grid-column: 1 / -1; margin: 0; font-size: 0.85rem; color: #bdbdbd; text-align: left; }
+.cf-alt a { color: var(--naranja-marca); }
+@media (max-width: 600px) { .contact-form { grid-template-columns: 1fr; } }
+
+/* ---------- CTA al final de cada servicio y de Nosotros ---------- */
+.cta-final {
+  max-width: 900px; margin: 3rem auto 2rem; padding: 2rem 1.5rem; text-align: center;
+  background: #111; border: 1px solid #333; border-radius: 12px;
+}
+.cta-final h2 { color: var(--blanco); font-size: 1.6rem; margin-bottom: 0.5rem; }
+.cta-final p { color: #cfcfcf; margin-bottom: 1.25rem; }
+.cta-final__acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+.cta-final__wa {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.4rem; border-radius: 8px;
+  background: #25d366; color: #052e16; font-weight: 700; text-decoration: none;
 }

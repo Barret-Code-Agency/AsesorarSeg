@@ -347,6 +347,17 @@
 
   contactForm.addEventListener('submit', async function (event) {
     event.preventDefault();
+    const status0 = this.querySelector('.cf-status');
+    if (status0) { status0.textContent = ""; status0.classList.remove('ok', 'error'); }
+    const faltante = [...this.querySelectorAll('[required]')].find((el) => !el.value.trim() || (el.type === 'email' && !el.checkValidity()));
+    if (faltante) {
+      faltante.focus();
+      if (status0) {
+        status0.textContent = faltante.type === 'email' && faltante.value ? "Revisá el email: no parece válido." : "Completá " + (faltante.closest('label')?.querySelector('span')?.textContent.toLowerCase() || "el campo") + ".";
+        status0.classList.add('error');
+      }
+      return;
+    }
 
     const btn = this.querySelector('button');
     const form = this;
@@ -369,32 +380,44 @@
       });
 
       if (response.ok) {
-        // Éxito: El usuario se queda en tu web, pero tú ya tienes los datos
-        btn.innerText = "Consulta Enviada con Éxito";
-        btn.style.backgroundColor = "#28a745"; // Verde éxito
-
+        btn.innerText = "Consulta enviada";
+        btn.style.backgroundColor = "#28a745";
+        const status = form.querySelector('.cf-status');
+        if (status) {
+          status.textContent = "Recibimos tu consulta. Te contactamos en menos de 48 horas hábiles al mail que dejaste.";
+          status.classList.add('ok');
+        }
+        form.reset();
         setTimeout(() => {
-          alert("Gracias por contactar a AsesorarSeg. Un consultor se comunicará con usted a la brevedad.");
-          form.reset();
           btn.innerText = originalText;
           btn.disabled = false;
-          btn.style.backgroundColor = ""; // Volver al color original
-
-          // Cerrar el modal automáticamente tras el envío exitoso
-          const modal = document.getElementById('contactModal');
-          if (modal) {
-            modal.classList.remove('open');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-          }
-        }, 1000);
-
+          btn.style.backgroundColor = "";
+        }, 1500);
       } else {
         throw new Error('Error en el envío');
       }
     } catch (error) {
-      btn.innerText = "Error. Intente nuevamente";
+      btn.innerText = originalText;
       btn.disabled = false;
+      const status = form.querySelector('.cf-status');
+      if (status) {
+        status.textContent = "No pudimos enviar el formulario. Escribinos a info@asesorarseg.com.ar o por WhatsApp.";
+        status.classList.add('error');
+      }
     }
+  });
+})();
+
+// preseleccion-servicio: los CTA de las tarjetas ([data-service]) abren el
+// formulario (lo hace initContactModal) y aca se deja elegido el servicio.
+(function () {
+  document.addEventListener('click', function (e) {
+    const cta = e.target.closest('[data-open-contact][data-service]');
+    if (!cta) return;
+    const svc = cta.getAttribute('data-service');
+    setTimeout(() => {
+      const select = document.querySelector('#modal-contact-form select[name="service"]');
+      if (svc && select) select.value = svc;
+    }, 50);
   });
 })();

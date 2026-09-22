@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Tecnología Avanzada</title>
+    <title>Tecnología Avanzada | AsesorarSeg</title>
+    <meta name="description" content="Tecnología Avanzada: servicio de AsesorarSeg, consultora en seguridad integral para empresas, minería y logística en Argentina." />
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <link rel="stylesheet" href="styles-tarjetas.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +34,14 @@
         <nav class="nav-mobile">
             <a href="./index.html" class="btn-nav">Portada</a>
             <a href="./nosotros.html" class="btn-nav">Equipo</a>
-            <a href="#services" class="btn-nav">Servicios</a>
+            <a href="./index.html#services" class="btn-nav">Servicios</a>
             <a href="#" id="contactBtn" class="btn-nav">Contacto</a>
         </nav>
 
     </header>
 
     <main>
-        <h2 class="subtitles-a">TECNOLOGÍA AVANZADA E INTELIGENCIA APLICADA</h2>
+        <h1 class="subtitles-a">TECNOLOGÍA AVANZADA E INTELIGENCIA APLICADA</h1>
         <p class="paragraph-tarj">
             Transformamos los desafíos de seguridad únicos en activos tecnológicos propios. Nos especializamos en la
             I+D (Investigación y Desarrollo), creación de software de nicho, comercialización estratégica y
@@ -94,20 +95,29 @@
         </ul>
 
         <div class="space"></div>
+
+        <section class="cta-final" aria-labelledby="cta-final-t">
+            <h2 id="cta-final-t">¿Querés aplicar esto en tu operación?</h2>
+            <p>Contanos cómo trabajan hoy y en 48 horas hábiles te decimos por dónde empezar.</p>
+            <div class="cta-final__acciones">
+                <a href="#" class="hero-cta" data-open-contact data-service="tecnologia-avanzada">Pedir una reunión</a>
+                <a href="https://wa.me/5491171170005?text=Hola%2C%20quiero%20consultar%20por%20Tecnología%20Avanzada." class="cta-final__wa" target="_blank" rel="noopener noreferrer">Escribinos por WhatsApp</a>
+            </div>
+        </section>
     </main>
 
     <footer class="footer" id="contacto">
         <p>© 2025 AsesorarSeg | Todos los derechos reservados.</p>
 
         <p class="legal-links">
-            Email: <a href="mailto:info@asesorarseg.com">info@asesorarseg.com.ar</a>
+            Email: <a href="mailto:info@asesorarseg.com.ar">info@asesorarseg.com.ar</a>
             | Teléfono: <a href="tel:+549117117-0005">+54 9 11 7117-0005</a>
         </p>
         <br>
         <p class="legal-links">
             Aviso Legal: El uso de este sitio web implica la aceptación de nuestros
-            <a href="./terminos-condiciones.html" target="_blank">Términos y Condiciones</a> y
-            <a href="./politica-privacidad.html" target="_blank">Política de Privacidad</a>. De conformidad con la
+            <a href="./terminos-condiciones.html" target="_blank" rel="noopener">Términos y Condiciones</a> y
+            <a href="./politica-privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>. De conformidad con la
             Ley 25.326, los datos recolectados se utilizan
             exclusivamente para la gestión de servicios y no son cedidos a terceros sin consentimiento expreso. El
             titular de los datos personales tiene la facultad de ejercer el derecho de acceso en forma gratuita.
@@ -124,38 +134,49 @@
             </div>
 
             <div class="modal-content">
-                <p>Complete el siguiente formulario</p>
+                <p>Completá el formulario y te respondemos en menos de 48 horas hábiles.</p>
 
-                <form id="modal-contact-form" class="contact-form" action="#" method="POST">
-                    <input type="text" name="name" placeholder="Nombre" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="tel" name="phone" placeholder="Teléfono" class="full">
-
-                    <select name="service" class="full" required>
-                        <option value="">Seleccione un servicio de interés...</option>
-                        <option value="seguridad-fisica">Seguridad Física y Electrónica</option>
-                        <option value="ciberseguridad">Ciberseguridad</option>
-                        <option value="monitoreo">Monitoreo Inteligente</option>
-                        <option value="tecnologia-avanzada">Tecnología Avanzada</option>
-                        <option value="blockchain">Blockchain y Cripto-seguridad</option>
-                        <option value="consultoria-estrategica">Consultoría Estratégica</option>
-                        <option value="auditorias">Auditorías Normativas</option>
-                        <option value="capacitacion">Capacitación Profesional</option>
-                        <option value="certificacion">Certificación de Personal</option>
-                        <option value="documentacion">Documentación Técnica</option>
-                        <option value="alianzas">Alianzas Institucionales</option>
-                        <option value="mineria">Minería y Petróleo</option>
-                        <option value="otro">Otro / Consulta General</option>
-                    </select>
-
-                    <textarea name="message" placeholder="Su mensaje o consulta" class="full" required></textarea>
-                    <button type="submit">Enviar Consulta</button>
-                </form>
+                <form id="modal-contact-form" class="contact-form" action="#" method="POST" novalidate>
+                        <label class="cf-field"><span>Nombre y apellido</span><input type="text" name="name" autocomplete="name" required></label>
+                        <label class="cf-field"><span>Empresa</span><input type="text" name="empresa" autocomplete="organization" required></label>
+                        <label class="cf-field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+                        <label class="cf-field"><span>Teléfono o WhatsApp</span><input type="tel" name="phone" autocomplete="tel"></label>
+                        <label class="cf-field full"><span>Cargo (opcional)</span><input type="text" name="cargo" autocomplete="organization-title"></label>
+                        <label class="cf-field full"><span>Servicio de interés (opcional)</span>
+                        <select name="service">
+                            <option value="">Elegí uno si ya lo sabés</option>
+                            <option value="seguridad-fisica">Seguridad Física y Electrónica</option>
+                            <option value="ciberseguridad">Ciberseguridad</option>
+                            <option value="monitoreo">Monitoreo Inteligente</option>
+                            <option value="tecnologia-avanzada">Tecnología Avanzada</option>
+                            <option value="blockchain">Blockchain y Cripto-seguridad</option>
+                            <option value="consultoria-estrategica">Consultoría Estratégica</option>
+                            <option value="auditorias">Auditorías Normativas</option>
+                            <option value="capacitacion">Capacitación Profesional</option>
+                            <option value="certificacion">Certificación de Personal</option>
+                            <option value="documentacion">Documentación Técnica</option>
+                            <option value="alianzas">Alianzas Institucionales</option>
+                            <option value="mineria">Minería y Petróleo</option>
+                            <option value="otro">Otro / Consulta General</option>
+                        </select></label>
+                        <label class="cf-field full"><span>Contanos qué necesitás</span><textarea name="message" required placeholder="Por ejemplo: tenemos 12 objetivos y queremos auditar los procedimientos de vigilancia."></textarea></label>
+                        <button type="submit">Enviar consulta</button>
+                        <p class="cf-status" role="status" aria-live="polite"></p>
+                        <p class="cf-alt">También podés escribir a <a href="mailto:info@asesorarseg.com.ar">info@asesorarseg.com.ar</a> o por <a href="https://wa.me/5491171170005" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p>
+                    </form>
             </div>
         </div>
     </div>
 
-    <script src="java.js"></script>
+            <a class="whatsapp-float"
+            href="https://wa.me/5491171170005?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20Tecnología%20Avanzada."
+            target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+            </svg>
+        </a>
+
+        <script src="java.js"></script>
 
 </body>
 

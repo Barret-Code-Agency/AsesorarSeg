@@ -616,3 +616,102 @@ header img {
     }
 
 }
+
+/* ---------- Compartido con la home: WhatsApp flotante, CTA, formulario ---------- */
+/* ============================================= */
+/* ====== SECCIÓN 21: CTA HERO + FLOWCHART ===== */
+/* ============================== + WHATSAPP ==== */
+
+/* Botón de llamada a la acción en el hero */
+.hero-cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 48px 0 6px;
+    position: relative;
+    z-index: 2;
+}
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--naranja-marca);
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(16px, 2vw, 20px);
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    border: 2px solid var(--naranja-marca);
+    box-shadow: 0 8px 24px rgba(252, 76, 0, 0.35);
+    transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+}
+.hero-cta:hover,
+.hero-cta:focus-visible {
+    transform: translateY(-3px);
+    background: transparent;
+    color: var(--naranja-marca);
+    box-shadow: 0 12px 28px rgba(252, 76, 0, 0.45);
+}
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    transition: transform .2s ease, box-shadow .2s ease;
+    animation: wa-pulse 2.4s ease-out infinite;
+}
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+    transform: scale(1.08);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.6);
+}
+.whatsapp-float svg {
+    width: 34px;
+    height: 34px;
+    fill: #fff;
+}
+.whatsapp-float {
+        animation: none;
+    }
+.whatsapp-float {
+        width: 52px;
+        height: 52px;
+        right: 14px;
+        bottom: 14px;
+    }
+.whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+    }
+/* ---------- Formulario con etiquetas visibles (accesibilidad) ---------- */
+.contact-panel .modal-content, .contact-panel .modal-content p { color: #e6e6e6; }
+.cf-field { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; color: #e6e6e6; }
+.cf-field > span { font-weight: 600; }
+.cf-field.full { grid-column: 1 / -1; }
+.cf-status { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: 0.95rem; text-align: left; }
+.cf-status.ok { color: #7ee2a0; }
+.cf-status.error { color: #ff8a80; }
+.cf-alt { grid-column: 1 / -1; margin: 0; font-size: 0.85rem; color: #bdbdbd; text-align: left; }
+.cf-alt a { color: var(--naranja-marca); }
+/* ---------- CTA al final de cada servicio y de Nosotros ---------- */
+.cta-final {
+  max-width: 900px; margin: 3rem auto 2rem; padding: 2rem 1.5rem; text-align: center;
+  background: #111; border: 1px solid #333; border-radius: 12px;
+}
+.cta-final h2 { color: var(--blanco); font-size: 1.6rem; margin-bottom: 0.5rem; }
+.cta-final p { color: #cfcfcf; margin-bottom: 1.25rem; }
+.cta-final__acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+.cta-final__wa {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.4rem; border-radius: 8px;
+  background: #25d366; color: #052e16; font-weight: 700; text-decoration: none;
+}
