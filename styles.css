@@ -694,6 +694,27 @@ header img {
 
 
 /* ============================================= */
+/* ============ SECCIÓN 5B: CYRANOAPP =========== */
+/* ============================================= */
+
+.cyrano-full {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.cyrano-inner {
+    max-width: 900px;
+    text-align: center;
+}
+
+.cyrano-text .paragraph-white {
+    text-align: center;
+}
+
+/* ============================================= */
 /* ======== SECCIÓN 6: VISION EN ACCION ======== */
 /* ============================================= */
 
