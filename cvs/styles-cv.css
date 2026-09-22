@@ -7,7 +7,7 @@
 
 body {
     background: #e0e0e0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'TikTok Sans', sans-serif;
     color: var(--dark);
     line-height: 1.6;
     margin: 0;
@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 3px solid var(--primary);
+    border-bottom: 1.5px solid var(--primary);
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
@@ -112,7 +112,7 @@ body {
 .two-columns > section:first-child ul li {
     margin-bottom: 4px;
     line-height: 1.2;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .pills {
@@ -126,7 +126,7 @@ body {
     background: var(--bg-light);
     padding: 4px 6px;
     border-radius: 10px;
-    font-size: 10px;
+    font-size: 11px;
     border: 1px solid #ddd;
     width: 100%;
     text-align: center;

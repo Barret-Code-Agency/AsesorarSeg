@@ -76,6 +76,7 @@ body {
     font-size: 28px;
     font-weight: 500;
     text-align: justify;
+    hyphens: auto;
     padding: 10px 50px;
     margin-bottom: 10px;
 }
@@ -85,6 +86,7 @@ body {
     font-size: 20px;
     font-weight: 500;
     text-align: justify;
+    hyphens: auto;
     margin-left: 65px;
     margin-right: 65px;
 }
@@ -94,6 +96,7 @@ body {
     font-size: 20px;
     font-weight: 500;
     text-align: justify;
+    hyphens: auto;
     margin-left: 65px;
 }
 
@@ -230,7 +233,7 @@ header img {
     padding: 3px 15px;
     text-align: center;
     text-decoration: none;
-    color: var(--naranja-marca);
+    color: #ff6a2e;
     background-color: #2c2c2c;
     border: 1px solid #444;
     border-radius: 10px;
@@ -242,6 +245,7 @@ header img {
 .btn-nav:hover, .btn-nav:active {
     background-color: #ff6600;
     border-color: #ff6600;
+    color: #000;
     transform: translateY(-2px);
 }
 
@@ -322,7 +326,7 @@ header img {
     grid-column: 1 / -1;
     cursor: pointer;
     background: var(--naranja-marca);
-    color: #fff;
+    color: #000;
     border: none;
     padding: 1rem 1.5rem;
     border-radius: 6px;
@@ -596,7 +600,7 @@ header img {
     }
 
     .brand-title .tag {
-        font-size: 8px;
+        font-size: 11px;
         color: var(--blanco);
         margin-top: 1px;
     }
@@ -635,14 +639,14 @@ header img {
     align-items: center;
     gap: 10px;
     background: var(--naranja-marca);
-    color: #fff;
+    color: #000;
     font-weight: 800;
     font-size: clamp(16px, 2vw, 20px);
     text-decoration: none;
     padding: 14px 36px;
     border-radius: 50px;
     border: 2px solid var(--naranja-marca);
-    box-shadow: 0 8px 24px rgba(252, 76, 0, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
     cursor: pointer;
 }
@@ -651,7 +655,7 @@ header img {
     transform: translateY(-3px);
     background: transparent;
     color: var(--naranja-marca);
-    box-shadow: 0 12px 28px rgba(252, 76, 0, 0.45);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 /* Botón flotante de WhatsApp */
 .whatsapp-float {
