@@ -741,7 +741,7 @@ header img {
     background: color-mix(in srgb, var(--negro-marca), transparent 40%);
     padding: 36px 20px;
     margin: 4px;
-    width: calc(100% - 8px);
+    width: 100%;
     position: relative;
     z-index: 2;
     text-align: center;
@@ -791,8 +791,7 @@ header img {
 }
 
 .pillar-card h3 {
-    /* Negro sobre el gris de la tarjeta (5,3:1); el naranja quedaba en 1,1:1 */
-    color: var(--negro-marca);
+    color: var(--naranja-marca);
     text-align: center;
     font-size: 1.15rem;
     margin: 0 0 0.8rem;
