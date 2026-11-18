@@ -1,0 +1,2 @@
+# Contactos de la vCard: tipo correcto para que el celular abra la agenda en vez de mostrar texto
+AddType "text/vcard; charset=utf-8" .vcf
