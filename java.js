@@ -303,11 +303,32 @@
   }
 
   /* ---------------------------
+     MENÚ MOBILE (<details class="nav-mobile">)
+  ----------------------------*/
+
+  function initMobileMenu() {
+    const menu = document.querySelector('.nav-mobile');
+    if (!menu) return;
+    const close = () => { menu.open = false; };
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('click', (e) => {
+      if (menu.open && !menu.contains(e.target)) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.open) {
+        close();
+        menu.querySelector('summary').focus();
+      }
+    });
+  }
+
+  /* ---------------------------
      INIT
   ----------------------------*/
 
   function initAll() {
     try {
+      initMobileMenu();
       initContactModal();
       initTeamModal();
       initRotator();

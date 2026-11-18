@@ -8,7 +8,8 @@
     <link rel="canonical" href="https://asesorarseg.com.ar/tarj-alianzas.html" />
     <meta name="description" content="Alianzas Institucionales: servicio de AsesorarSeg, consultora en seguridad integral para empresas, minería y logística en Argentina." />
     <link rel="icon" type="image/png" href="./images/favicon.png">
-    <link rel="stylesheet" href="styles-tarjetas.css?v=20260921c">
+    <link rel="stylesheet" href="styles-tarjetas.css?v=20261117">
+    <link rel="stylesheet" href="header-mobile.css?v=20261117">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap"
@@ -32,12 +33,15 @@
             <a href="#" id="openContactModalFromNav">Contacto</a>
         </nav>
 
-        <nav class="nav-mobile">
-            <a href="./index.html" class="btn-nav">Portada</a>
-            <a href="./nosotros.html" class="btn-nav">Equipo</a>
-            <a href="./index.html#services" class="btn-nav">Servicios</a>
-            <a href="#" id="contactBtn" class="btn-nav">Contacto</a>
-        </nav>
+        <details class="nav-mobile">
+            <summary class="nav-toggle"><svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Menú</span></summary>
+            <nav class="nav-mobile-links" aria-label="Menú principal">
+                <a href="./index.html" class="btn-nav">Portada</a>
+                <a href="./nosotros.html" class="btn-nav">Equipo</a>
+                <a href="./index.html#services" class="btn-nav">Servicios</a>
+                <a href="#" id="contactBtn" class="btn-nav">Contacto</a>
+            </nav>
+        </details>
 
     </header>
 
@@ -231,7 +235,7 @@
             </svg>
         </a>
 
-        <script src="java.js?v=20261117"></script>
+        <script src="java.js?v=20261117b"></script>
 
 </body>
 
