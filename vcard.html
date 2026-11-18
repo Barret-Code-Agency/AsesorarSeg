@@ -21,6 +21,14 @@
             --fondo: #f4f4f4;
             --borde: #e6e6e6;
             --font-family: "TikTok Sans", sans-serif;
+            --sombra-naranja: rgba(252, 76, 0, .22);
+            --whatsapp: #25d366;
+            --linkedin: #0a66c2;
+            --instagram: #e4405f;
+            --x: #000000;
+            --tiktok: #000000;
+            --youtube: #ff0000;
+            --facebook: #1877f2;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -95,7 +103,7 @@
             width: 64px; height: 64px;
             border-radius: 50%;
             background: var(--blanco);
-            box-shadow: 0 4px 14px rgba(0,0,0,.18);
+            box-shadow: 0 4px 14px var(--sombra-naranja);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -141,7 +149,7 @@
         .datos .fila:last-child { border-bottom: 0; }
         .datos .fila > a { flex: 1; border-bottom: 0; }
         .datos .fila > a.extra { flex: 0; padding-left: 0; }
-        .datos .fila > a.extra .ico { color: var(--naranja-marca); }
+        .datos .fila > a.extra .ico { color: var(--whatsapp); }
         .ico {
             width: 40px; height: 40px;
             border-radius: 50%;
@@ -168,11 +176,17 @@
             width: 48px; height: 48px;
             border-radius: 50%;
             background: var(--fondo);
-            color: var(--negro-marca);
+            color: var(--red, var(--negro-marca));
             display: flex; align-items: center; justify-content: center;
             transition: background .15s, color .15s;
         }
-        .redes a:hover { background: var(--naranja-marca); color: var(--blanco); }
+        .redes a:hover { background: var(--red, var(--naranja-marca)); color: var(--blanco); }
+        .red-linkedin { --red: var(--linkedin); }
+        .red-instagram { --red: var(--instagram); }
+        .red-x { --red: var(--x); }
+        .red-tiktok { --red: var(--tiktok); }
+        .red-youtube { --red: var(--youtube); }
+        .red-facebook { --red: var(--facebook); }
         .redes svg { width: 22px; height: 22px; }
         .redes:empty, .titulo:has(+ .redes:empty) { display: none; }
 
@@ -278,7 +292,7 @@
         `<a href="${h}" target="_blank" rel="noopener"><span class="ico">${i}</span><span><div class="label">${l}</div><div class="valor">${v}</div></span></a>`;
     const redes = (obj) => Object.entries(obj || {})
         .filter(([, url]) => url)
-        .map(([k, url]) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${REDES_LABEL[k] || k}">${I[k] || I.web}</a>`)
+        .map(([k, url]) => `<a class="red-${k}" href="${url}" target="_blank" rel="noopener" aria-label="${REDES_LABEL[k] || k}">${I[k] || I.web}</a>`)
         .join("");
 
     document.title = `${C.nombre} ${C.apellido} — ${EMPRESA.nombre}`;
