@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#000000">
+    <title>Contacto — AsesorarSeg</title>
+    <link rel="icon" href="./images/logo-sin-texto.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <style>
+        :root {
+            --naranja-marca: #fc4c00;
+            --gris-marca: #828282;
+            --negro-marca: black;
+            --blanco: white;
+            --text-p: #424242;
+            --fondo: #f4f4f4;
+            --borde: #e6e6e6;
+            --font-family: "TikTok Sans", sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-family);
+            background: var(--fondo);
+            color: var(--text-p);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 430px;
+            background: var(--blanco);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            position: relative;
+            background: var(--negro-marca);
+            color: var(--blanco);
+            text-align: center;
+            padding: 40px 24px 96px;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+        }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 24px; left: 24px;
+            width: 90px; height: 60px;
+            border-top: 5px solid var(--naranja-marca);
+            border-left: 5px solid var(--naranja-marca);
+        }
+        .logo {
+            position: absolute;
+            top: 20px; right: 24px;
+            width: 44px; height: 44px;
+        }
+        .avatar {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 5px solid var(--blanco);
+            margin: 12px auto 20px;
+            background: var(--naranja-marca);
+            color: var(--blanco);
+            font-size: 44px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        h1 { font-size: 28px; font-weight: 700; line-height: 1.1; }
+        .titulo-persona { font-size: 14px; color: var(--naranja-marca); margin-top: 6px; }
+        .titulo-persona:empty { display: none; }
+        .cargo { font-size: 16px; font-weight: 400; margin-top: 8px; color: #e0e0e0; }
+
+        /* ---------- Accesos rápidos ---------- */
+        .acciones {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: -72px;
+            position: relative;
+            z-index: 1;
+        }
+        .acciones a {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: var(--blanco);
+            box-shadow: 0 4px 14px rgba(0,0,0,.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform .15s;
+        }
+        .acciones a:active { transform: scale(.94); }
+        .acciones svg { width: 24px; height: 24px; }
+
+        /* ---------- Cuerpo ---------- */
+        .cuerpo { padding: 28px 24px 40px; flex: 1; }
+        .bio {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+        .marca { font-weight: 700; font-size: 20px; color: var(--gris-marca); }
+        .marca span { color: var(--naranja-marca); }
+
+        .titulo {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gris-marca);
+            margin: 24px 0 10px 4px;
+        }
+        .datos {
+            background: var(--fondo);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .datos a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: var(--negro-marca);
+            border-bottom: 1px solid var(--borde);
+        }
+        .datos a:last-child { border-bottom: 0; }
+        .datos .fila { display: flex; align-items: center; border-bottom: 1px solid var(--borde); }
+        .datos .fila:last-child { border-bottom: 0; }
+        .datos .fila > a { flex: 1; border-bottom: 0; }
+        .datos .fila > a.extra { flex: 0; padding-left: 0; }
+        .datos .fila > a.extra .ico { color: var(--naranja-marca); }
+        .ico {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--blanco);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ico svg { width: 18px; height: 18px; }
+        .datos .label { font-size: 12px; color: var(--gris-marca); }
+        .datos .valor { font-size: 16px; font-weight: 500; overflow-wrap: anywhere; }
+
+        svg.ln { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        svg.fl { fill: currentColor; }
+        .acciones a { color: var(--naranja-marca); }
+        .ico { color: var(--gris-marca); }
+
+        .redes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .redes a {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--fondo);
+            color: var(--negro-marca);
+            display: flex; align-items: center; justify-content: center;
+            transition: background .15s, color .15s;
+        }
+        .redes a:hover { background: var(--naranja-marca); color: var(--blanco); }
+        .redes svg { width: 22px; height: 22px; }
+        .redes:empty, .titulo:has(+ .redes:empty) { display: none; }
+
+        .btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            margin-top: 28px;
+            background: var(--naranja-marca);
+            color: var(--blanco);
+            border: 0;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: filter .2s;
+        }
+        .btn:hover { filter: brightness(1.12); }
+
+        details { margin-top: 24px; text-align: center; }
+        summary {
+            cursor: pointer;
+            color: var(--gris-marca);
+            font-size: 14px;
+            list-style: none;
+        }
+        summary::-webkit-details-marker { display: none; }
+        #qr { width: 200px; margin: 16px auto 0; padding: 10px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 8px; }
+        #qr svg { display: block; width: 100%; height: auto; }
+
+        .error { padding: 40px; text-align: center; color: var(--naranja-marca); }
+    </style>
+</head>
+<body>
+<main class="card" id="card">
+    <header class="header">
+        <img class="logo" src="./images/logo-sin-texto.png" alt="AsesorarSeg">
+        <div class="avatar" id="avatar"></div>
+        <h1 id="nombre"></h1>
+        <div class="titulo-persona" id="titulo"></div>
+        <div class="cargo" id="cargo"></div>
+    </header>
+
+    <nav class="acciones" id="acciones"></nav>
+
+    <section class="cuerpo">
+        <p class="bio" id="bio"></p>
+
+        <div class="datos" id="datos"></div>
+
+        <div class="titulo">Redes personales</div>
+        <div class="redes" id="redes-personales"></div>
+
+        <div class="titulo">AsesorarSeg</div>
+        <div class="datos" id="datos-empresa"></div>
+        <div class="titulo">Seguinos</div>
+        <div class="redes" id="redes-empresa"></div>
+
+        <a class="btn" id="guardar" href="#">Guardar contacto</a>
+        <details>
+            <summary>Mostrar código QR</summary>
+            <div id="qr"></div>
+        </details>
+    </section>
+</main>
+<script src="./contactos.js?v=6"></script>
+<script>
+(() => {
+    const u = new URLSearchParams(location.search).get("u") || Object.keys(CONTACTOS)[0];
+    const C = CONTACTOS[u];
+    if (!C) {
+        document.getElementById("card").innerHTML = '<p class="error">Contacto no encontrado.</p>';
+        return;
+    }
+    const tel = C.tel || EMPRESA.tel;
+    const telRaw = tel.replace(/[\s-]/g, "");
+    const direccion = C.direccion || EMPRESA.direccion;
+    const href = {
+        tel: "tel:" + telRaw,
+        wa: "https://wa.me/" + telRaw.replace("+", ""),
+        mail: "mailto:" + C.email,
+        map: "https://maps.google.com/?q=" + encodeURIComponent(direccion)
+    };
+
+    const I = {
+        tel: '<svg class="ln" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
+        mail: '<svg class="ln" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+        pin: '<svg class="ln" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+        web: '<svg class="ln" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+        wa: '<svg class="fl" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>',
+        linkedin: '<svg class="fl" viewBox="0 0 24 24"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9h3zM6.5 7.7A1.7 1.7 0 1 1 8.2 6a1.7 1.7 0 0 1-1.7 1.7zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6V19h-3V9h2.9v1.4a3.2 3.2 0 0 1 2.9-1.6c3 0 3.6 2 3.6 4.6z"/></svg>',
+        instagram: '<svg class="ln" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+        x: '<svg class="fl" viewBox="0 0 24 24"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.5L4.5 21h-3l7.5-8.6L1.2 3h6.6l4.5 6z"/></svg>',
+        tiktok: '<svg class="fl" viewBox="0 0 24 24"><path d="M16.5 2h-3.4v13.3a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9a6.3 6.3 0 1 0 5.4 6.3V8.5A7.7 7.7 0 0 0 21 10V6.6A4.6 4.6 0 0 1 16.5 2z"/></svg>',
+        youtube: '<svg class="fl" viewBox="0 0 24 24"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.8 4.8 12 4.8 12 4.8s-6.8 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.7.4 8.5.4 8.5.4s6.8 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8zM9.8 15.1V8.9L15.5 12z"/></svg>',
+        facebook: '<svg class="fl" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8z"/></svg>'
+    };
+    const REDES_LABEL = { linkedin: "LinkedIn", instagram: "Instagram", x: "X", tiktok: "TikTok", youtube: "YouTube", facebook: "Facebook" };
+
+    const fila = (h, i, l, v) =>
+        `<a href="${h}" target="_blank" rel="noopener"><span class="ico">${i}</span><span><div class="label">${l}</div><div class="valor">${v}</div></span></a>`;
+    const redes = (obj) => Object.entries(obj || {})
+        .filter(([, url]) => url)
+        .map(([k, url]) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${REDES_LABEL[k] || k}">${I[k] || I.web}</a>`)
+        .join("");
+
+    document.title = `${C.nombre} ${C.apellido} — ${EMPRESA.nombre}`;
+    document.getElementById("avatar").innerHTML = C.foto
+        ? `<img src="${C.foto}" alt="${C.nombre} ${C.apellido}">`
+        : (C.nombre[0] + C.apellido[0]).toUpperCase();
+    document.getElementById("nombre").textContent = `${C.nombre} ${C.apellido}`;
+    document.getElementById("titulo").textContent = C.titulo || "";
+    document.getElementById("cargo").textContent = C.cargo;
+    document.getElementById("bio").innerHTML = C.bio
+        || `<span class="marca">Asesorar<span>Seg</span></span><br>${EMPRESA.slogan}`;
+
+    document.getElementById("acciones").innerHTML = [
+        [href.tel, I.tel, "Llamar"],
+        [href.mail, I.mail, "Email"],
+        [href.map, I.pin, "Ubicación"]
+    ].map(([h, i, t]) => `<a href="${h}" aria-label="${t}" target="_blank" rel="noopener">${i}</a>`).join("");
+
+    document.getElementById("datos").innerHTML = [
+        `<div class="fila">${fila(href.tel, I.tel, "Teléfono / WhatsApp", tel)}<a class="extra" href="${href.wa}" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="ico">${I.wa}</span></a></div>`,
+        `<div class="fila">${fila(href.mail, I.mail, "Email", C.email)}</div>`,
+        `<div class="fila">${fila(href.map, I.pin, "Dirección", direccion)}</div>`
+    ].join("");
+    document.getElementById("redes-personales").innerHTML = redes(C.redes);
+
+    document.getElementById("datos-empresa").innerHTML =
+        fila(EMPRESA.web, I.web, "Web", EMPRESA.web.replace(/^https?:\/\//, ""));
+    document.getElementById("redes-empresa").innerHTML = redes(EMPRESA.redes);
+
+    // vCard compacta sólo para el QR; el botón usa el .vcf estático (con foto) de ./contactos/
+    const vcf = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${C.apellido};${C.nombre};;;`,
+        `FN:${C.nombre} ${C.apellido}`,
+        `ORG:${EMPRESA.nombre}`,
+        `TITLE:${[C.titulo, C.cargo].filter(Boolean).join(" · ")}`,
+        `TEL;TYPE=CELL:${telRaw}`,
+        `EMAIL;TYPE=INTERNET:${C.email}`,
+        `URL:${EMPRESA.web}`,
+        ...Object.values(C.redes || {}).filter(Boolean).map(url => `URL:${url}`),
+        `ADR;TYPE=WORK:;;${direccion};;;;`,
+        "END:VCARD"
+    ].join("\r\n");
+
+    document.getElementById("guardar").href = `./contactos/${u}.vcf`;
+
+    qrcode.stringToBytes = qrcode.stringToBytesFuncs["UTF-8"];
+    const qr = qrcode(0, "M");
+    qr.addData(vcf, "Byte");
+    qr.make();
+    document.getElementById("qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+
+})();
+</script>
+</body>
+</html>
