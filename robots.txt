@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asesorarseg.com.ar/sitemap.xml

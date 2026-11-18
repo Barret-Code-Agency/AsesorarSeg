@@ -121,7 +121,8 @@
     function close() {
       closeModal(modal);
       triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
-      if (form) form.reset();
+      // No se borra lo escrito al cerrar: un toque accidental fuera del panel
+      // no debe hacer perder el mensaje. El form se limpia solo tras un envío OK.
     }
 
     // Enganchar todos los disparadores de apertura

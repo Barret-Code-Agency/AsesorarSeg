@@ -1,2 +1,32 @@
 # Contactos de la vCard: tipo correcto para que el celular abra la agenda en vez de mostrar texto
 AddType "text/vcard; charset=utf-8" .vcf
+
+# Archivos de desarrollo y documentación interna: no se sirven
+RedirectMatch 404 /(\.vscode|\.impeccable|\.git)(/|$)
+<FilesMatch "^(README\.md|\.gitignore)$">
+    Require all denied
+</FilesMatch>
+
+# Una sola URL para la portada: /index.html -> /
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+    RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    # Directivas que no afectan scripts ni estilos: se aplican
+    Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'; upgrade-insecure-requests"
+    # Política completa en observación: se mira la consola antes de aplicarla
+    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://cloudflareinsights.com; frame-src 'self'"
+
+    # PDFs de CV y vCards: accesibles, pero fuera del índice de buscadores
+    <FilesMatch "\.(pdf|vcf)$">
+        Header set X-Robots-Tag "noindex"
+    </FilesMatch>
+</IfModule>
