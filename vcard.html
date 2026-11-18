@@ -22,6 +22,7 @@
             --borde: #e6e6e6;
             --font-family: "TikTok Sans", sans-serif;
             --sombra-naranja: rgba(252, 76, 0, .22);
+            --naranja-suave: #ff8a52;
             --whatsapp: #25d366;
             --linkedin: #0a66c2;
             --instagram: #e4405f;
@@ -164,7 +165,8 @@
         svg.ln { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
         svg.fl { fill: currentColor; }
         .acciones a { color: var(--naranja-marca); }
-        .ico { color: var(--gris-marca); }
+        .ico { color: var(--naranja-suave); }
+        .datos a:not(.extra) .ico { box-shadow: 0 2px 8px var(--sombra-naranja); }
 
         .redes {
             display: flex;
