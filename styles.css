@@ -290,6 +290,34 @@ header img {
 }
 
 
+.nav-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 2px;
+    background-color: var(--negro-marca);
+}
+
+.btn-nav {
+    display: block;
+    padding: 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #ff6a2e;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 10px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.btn-nav:hover, .btn-nav:active {
+    background-color: #ff6600;
+    border-color: #ff6600;
+    color: #000;
+    transform: translateY(-2px);
+}
 
 
 /* ================================================ */
@@ -1331,6 +1359,9 @@ header img {
         display: none;
     }
 
+    .nav-mobile {
+        display: flex;
+    }
 
     header img {
         height: 56px;
@@ -2023,28 +2054,5 @@ header img {
         width: 72px;
         height: 72px;
         font-size: 22px;
-    }
-}
-
-/* Hero en mobile: título compacto y CTA dentro de la primera pantalla */
-@media (max-width: 700px) {
-    .hero-full {
-        padding: 28px 16px 48px;
-        background-attachment: scroll;
-    }
-
-    .hero-content .title {
-        font-size: 27px;
-        line-height: 1.15;
-        padding: 0 4px;
-        text-wrap: balance;
-    }
-
-    .hero-content .rotator {
-        display: none;
-    }
-
-    .hero-content .hero-cta-wrap {
-        margin-top: 24px;
     }
 }
